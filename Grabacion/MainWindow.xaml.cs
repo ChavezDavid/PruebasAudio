@@ -31,6 +31,10 @@ namespace Grabacion
         WaveFileWriter writer;
         WaveOutEvent waveOut;
         AudioFileReader reader;
+        int puntaje = 0;
+        bool poder = false;
+        int timerPoder = 10;
+        int cronometro = 100;
 
         public MainWindow()
         {
@@ -40,7 +44,6 @@ namespace Grabacion
 
         private void btnIniGrabacion_Click(object sender, RoutedEventArgs e)
         {
-
             waveIn = new WaveIn();
             waveIn.WaveFormat = new WaveFormat(44100, 16, 1);
             formato = waveIn.WaveFormat;
@@ -63,7 +66,6 @@ namespace Grabacion
             byte[] buffer = e.Buffer;
             int bytesGrabados = e.BytesRecorded;
 
-            double acumulador = 0;
             double numMuestras = bytesGrabados / 2;
             int exponente = 1;
             int numeroMuestrasComplejas = 0;
@@ -75,8 +77,6 @@ namespace Grabacion
                 exponente++;
             } while (bitsMaximos < numMuestras);
 
-            //bitsMaximos = 
-
             exponente -= 2;
             numeroMuestrasComplejas = bitsMaximos / 2;
 
@@ -84,9 +84,6 @@ namespace Grabacion
 
             for (int i = 0; i < bytesGrabados; i+=2)
             {
-                //byte i =      0 1 1 0 0 1 1 1 0 0 0 0 0 0 0 0
-                //byte i+1 =    0 0 0 0 0 0 0 0 1 0 1 1 0 1 0 1
-                //or =          0 1 1 0 0 1 1 1 1 0 1 1 0 1 0 1
                 short muestra = (short)Math.Abs((buffer[i + 1] << 8) | buffer[i]);
 
                 float muestra32bits = (float)muestra / 32768.0f;
@@ -95,16 +92,7 @@ namespace Grabacion
                 {
                     muestrasComplejas[i / 2].X = muestra32bits;
                 }
-
-                //lblMuestra.Text = muestra.ToString();
-                //sldVolumen.Value = muestra;
-
-                //acumulador += muestra;
-                //numMuestras++;
             }
-            //double promedio = acumulador / numMuestras;
-            //sldVolumen.Value = promedio;
-            //writer.Write(buffer, 0, bytesGrabados);
 
             FastFourierTransform.FFT(true, exponente, muestrasComplejas);
             float[] valoresAbsolutos = new float[muestrasComplejas.Length];
@@ -117,6 +105,8 @@ namespace Grabacion
             int indiceMaximo = valoresAbsolutos.ToList().IndexOf(valoresAbsolutos.Max());
             float frecuenciaFundamental = (float)(indiceMaximo * waveIn.WaveFormat.SampleRate) / (float)valoresAbsolutos.Length;
             lblFrecuencia.Text = frecuenciaFundamental.ToString();
+
+            detectarFrecuencia(frecuenciaFundamental);
         }
 
         private void btnDetGrabacion_Click(object sender, RoutedEventArgs e)
@@ -136,6 +126,102 @@ namespace Grabacion
                 waveOut.Init(reader);
                 waveOut.Play();
             }
+        }
+
+        void detectarFrecuencia(float frecuenciaFundamental)
+        {
+            int boton = 0;
+
+            if(frecuenciaFundamental > 420 && frecuenciaFundamental < 460)
+            {
+                boton = 1;
+            }
+            if (frecuenciaFundamental > 473 && frecuenciaFundamental < 503)
+            {
+                boton = 2;
+            }
+            if (frecuenciaFundamental > 513 && frecuenciaFundamental < 543)
+            {
+                boton = 3;
+            }
+            if (frecuenciaFundamental > 567 && frecuenciaFundamental < 607)
+            {
+                boton = 4;
+            }
+            if (frecuenciaFundamental > 639 && frecuenciaFundamental < 669)
+            {
+                boton = 5;
+            }
+            if (frecuenciaFundamental > 688 && frecuenciaFundamental < 718)
+            {
+                boton = 6;
+            }
+            if (frecuenciaFundamental > 763 && frecuenciaFundamental < 803)
+            {
+                boton = 7;
+            }
+
+            pulsarBoton(boton);
+        }
+
+        void pulsarBoton(int boton)
+        {
+            bool acierto=false;
+            double margenBoton = Canvas.GetLeft(greenButton);
+            txtMargen.Text = Convert.ToString(margenBoton);
+
+            if (boton == 1 /*&& margenBoton <= 70.0 && margenBoton >= 30.0*/)
+            {
+                acierto = true;
+            }
+            if (boton == 2)
+            {
+                acierto = true;
+            }
+            if (boton == 3)
+            {
+                acierto = true;
+            }
+            if (boton == 4)
+            {
+                acierto = true;
+            }
+            if (boton == 5)
+            {
+                acierto = true;
+            }
+            if (boton == 6)
+            {
+                acierto = true;
+            }
+            if (boton == 7)
+            {
+                poder = true;
+            }
+
+            if (acierto)
+            {
+                puntaje += 100;
+            }
+
+            if (poder)
+            {
+                activarPoder();
+            }
+
+
+            acierto = false;
+            lblPuntaje.Text = Convert.ToString(puntaje);
+        }
+
+        void activarPoder()
+        {
+            txtPoder.Text = "Activado";
+            if (cronometro <= 0)
+            {
+                txtPoder.Text = "Desactivado";
+            }
+            cronometro -= 1;
         }
     }
 }

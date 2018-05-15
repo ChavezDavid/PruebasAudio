@@ -1,9 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grabacion", "Grabacion\Grabacion.csproj", "{8C7EE3AA-AEE2-44D5-9A95-88EC615C9931}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "graficos", "graficos", "{82B427E4-4682-4C76-895B-D6DC3E7C9220}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Blue.png = ..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Blue.png
+		..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Green.png = ..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Green.png
+		..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\NotaEspecial.png = ..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\NotaEspecial.png
+		..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Orange.png = ..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Orange.png
+		..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Pink.png = ..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Pink.png
+		..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Purple.png = ..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Purple.png
+		..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Red.png = ..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Red.png
+		..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Yellow.png = ..\..\..\Downloads\Accordion Hero_ Ramón Ayala\Botones\Yellow.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

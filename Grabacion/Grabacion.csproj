@@ -96,5 +96,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="graficos\Blue.png" />
+    <Resource Include="graficos\Green.png" />
+    <Resource Include="graficos\NotaEspecial.png" />
+    <Resource Include="graficos\Orange.png" />
+    <Resource Include="graficos\Pink.png" />
+    <Resource Include="graficos\Purple.png" />
+    <Resource Include="graficos\Red.png" />
+    <Resource Include="graficos\Yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="graficos\Caguama.png" />
+    <Resource Include="graficos\ChanclasConCalcetines.png" />
+    <Resource Include="graficos\Charrones.png" />
+    <Resource Include="graficos\Logo.png" />
+    <Resource Include="graficos\Medidor.png" />
+    <Resource Include="graficos\Puntaje.png" />
+    <Resource Include="graficos\Track.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
