@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Grabacion"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Canvas>
+    <Canvas x:Name="canvasuno">
         <Button x:Name="btnIniGrabacion" Content="Iniciar Grabacion" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" Click="btnIniGrabacion_Click"/>
         <Button x:Name="btnDetGrabacion" Content="Detener Grabacion" HorizontalAlignment="Left" Margin="582,10,0,0" VerticalAlignment="Top" Width="200" Click="btnDetGrabacion_Click"/>
         <TextBlock x:Name="lblMuestra" HorizontalAlignment="Left" Margin="10,37,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
@@ -33,9 +33,10 @@
             </Image.RenderTransform>
         </Image>
         <Image x:Name="greenButton" HorizontalAlignment="Left" Height="57" Margin="42,35,0,0" VerticalAlignment="Top" Width="58" Source="graficos/Green.png"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="312" Margin="30,97,0,0" Stroke="Black" VerticalAlignment="Top" Width="70" Opacity="0.5"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="312" Stroke="Black" VerticalAlignment="Top" Width="70" Opacity="0.5" Canvas.Left="30" Canvas.Top="172"/>
         <TextBlock x:Name="txtMargen" Canvas.Left="293" TextWrapping="Wrap" Text="0" Canvas.Top="97"/>
         <TextBlock x:Name="txtPoder" Canvas.Left="411" TextWrapping="Wrap" Text="Desactivado" Canvas.Top="97"/>
+        <TextBlock x:Name="txtMargenImage" Canvas.Left="293" TextWrapping="Wrap" Text="0" Canvas.Top="118"/>
 
     </Canvas>
 </Window>

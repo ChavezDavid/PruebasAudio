@@ -35,11 +35,14 @@ namespace Grabacion
         bool poder = false;
         int timerPoder = 10;
         int cronometro = 100;
+        double margenBoton;
+        double canvasLeft;
 
         public MainWindow()
         {
             InitializeComponent();
             waveOut = new WaveOutEvent();
+            canvasLeft = Canvas.GetLeft(canvasuno);
         }
 
         private void btnIniGrabacion_Click(object sender, RoutedEventArgs e)
@@ -167,10 +170,11 @@ namespace Grabacion
         void pulsarBoton(int boton)
         {
             bool acierto=false;
-            double margenBoton = Canvas.GetLeft(greenButton);
+            margenBoton = Canvas.GetLeft(greenButton);
             txtMargen.Text = Convert.ToString(margenBoton);
+            txtMargenImage.Text = Convert.ToString(canvasLeft);
 
-            if (boton == 1 /*&& margenBoton <= 70.0 && margenBoton >= 30.0*/)
+            if (boton == 1 && margenBoton <= canvasLeft && margenBoton >= canvasLeft)
             {
                 acierto = true;
             }
@@ -209,7 +213,6 @@ namespace Grabacion
                 activarPoder();
             }
 
-
             acierto = false;
             lblPuntaje.Text = Convert.ToString(puntaje);
         }
@@ -220,6 +223,8 @@ namespace Grabacion
             if (cronometro <= 0)
             {
                 txtPoder.Text = "Desactivado";
+                cronometro = 100;
+                poder = false;
             }
             cronometro -= 1;
         }
